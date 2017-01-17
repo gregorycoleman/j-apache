@@ -27,7 +27,7 @@ RUN pecl config-set preferred_state beta \
     && pecl install -o -f xdebug \
     && rm -rf /tmp/pear \
     && pecl config-set preferred_state stable
-COPY ./99-xdebug.ini.disabled /usr/local/etc/php/conf.d/
+COPY ./php/conf.d/99-xdebug.ini.disabled /usr/local/etc/php/conf.d/
 
 # Install Mysql
 RUN docker-php-ext-install mysqli pdo_mysql
@@ -69,16 +69,7 @@ ENV APACHE_DOC_ROOT /var/www/html
 RUN a2enmod rewrite
 
 # Additional PHP ini configuration
-COPY ./999-php.ini /usr/local/etc/php/conf.d/
-
-COPY ./index.php /var/www/html/index.php
-
-# Install ssmtp Mail Transfer Agent
-RUN apt-get update \
-    && apt-get install -y ssmtp \
-    && apt-get clean \
-    && echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf \
-    && echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini
+COPY ./php/conf.d/*.ini /usr/local/etc/php/conf.d/
 
 # Install MySQL CLI Client
 RUN apt-get update \
@@ -86,6 +77,5 @@ RUN apt-get update \
 
 ########################################################################################################################
 
-# Start!
-COPY ./start /usr/local/bin/
-CMD ["start"]
+
+CMD ["apache2-foreground"]
