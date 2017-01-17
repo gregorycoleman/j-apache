@@ -1,5 +1,10 @@
+#
+# Starting out, we enable everything for an automated build.
+#
+#
+
 FROM php:7.0-apache
-MAINTAINER Webgriffe Srl <support@webgriffe.com>
+MAINTAINER Greg Coleman <greg@v1.co>
 
 # Install GD
 RUN apt-get update \
