@@ -5,13 +5,28 @@ Automated Apache / PHP container for Joybird
 # PHP ini files
 
 
-Adding config to INI File
+Adding config files to INI File
 --------
-
 
 The container's PHP is configured with --with-config-file-scan-dir, so PHP will load all files in /etc/php.d/*.ini as configuration files.
 
+````
+j-apache
+ |---/Dockerfile
+ |---/php/conf.d   <-- Put any php config files here
+ |---/README.md
+
+````
+
 Config files placed in php/conf.d directory in this repository will overwrite the settings in php.ini.
+
+
+#### Example 999-php.ini
+````
+memory_limit = -1
+error_reporting = E_ALL | E_STRICT
+````
+
 
 Putting config stuff here allows you to have custom settings while keeping updates simpler: if you modify php.ini itself then you either have to retain the old php.ini or overwrite it when you update PHP. If you keep your custom settings in, eg. conf.d/local.ini then you can update PHP easily while retaining any environment-specific settings.
 
