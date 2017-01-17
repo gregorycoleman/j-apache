@@ -47,18 +47,16 @@ Features
 * Ability to set sSMTP mailhub, AuthUser and AuthPass through `SSMTP_MAILHUB`, `SSMTP_AUTH_USER` and `SSMTP_AUTH_PASS` environment variables
 * MySQL CLI Client installed
 
-Usage
------
-
-Standalone usage example with host's current working directory as document root:
-
-	$ docker run -p 80:80 -v $(pwd):/var/www/html webgriffe/php-apache-base
-
 Building
 -----
 You can build the image locally from the directory containing the Dockerfile
 
 	docker build -t joybird-apache
+
+Standalone usage example with host's current working directory as document root:
+
+	$ docker run -p 80:80 -v $(pwd):/var/www/html gregcoleman/j-apache
+
 
 
 
