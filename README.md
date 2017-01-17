@@ -1,9 +1,6 @@
 Apache / PHP container for Joybird ( Automated Build ) 
 =====================================
 
-# PHP ini files
-
-
 Adding PHP ini config files to container
 --------
 
@@ -33,8 +30,6 @@ The files are loaded in numeric order, so 000-php.ini is loaded before 001-php.i
 
 Committing files to the repositry will generate a new build on docker hub automatically.
 
-
-# About 
 
 Features
 --------
