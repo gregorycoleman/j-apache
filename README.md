@@ -1,14 +1,13 @@
-# joybird-apache
-Automated Apache / PHP container for Joybird
+Apache / PHP container for Joybird ( Automated Build ) 
 =====================================
 
 # PHP ini files
 
 
-Adding config files to INI File
+Adding PHP ini config files to container
 --------
 
-The container's PHP is configured with --with-config-file-scan-dir, so PHP will load all files in /etc/php.d/*.ini as configuration files.
+The container's PHP is configured with --with-config-file-scan-dir, so PHP will load all files in /etc/php.d/*.ini as configuration files. Pull this repo, place and commit your php.ini files and push.
 
 ````
 j-apache
