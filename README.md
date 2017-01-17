@@ -5,7 +5,7 @@ Automated Apache / PHP container for Joybird
 # PHP ini files
 
 
-Adding congig to INI File
+Adding config to INI File
 --------
 
 
