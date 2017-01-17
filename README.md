@@ -2,7 +2,25 @@
 Automated Apache / PHP container for Joybird
 =====================================
 
-Dockerized environment for PHP web development and Apache web server.
+# PHP ini files
+
+
+Adding congig to INI File
+--------
+
+
+The container's PHP is configured with --with-config-file-scan-dir, so PHP will load all files in /etc/php.d/*.ini as configuration files.
+
+Config files placed in php/conf.d directory in this repository will overwrite the settings in php.ini.
+
+Putting config stuff here allows you to have custom settings while keeping updates simpler: if you modify php.ini itself then you either have to retain the old php.ini or overwrite it when you update PHP. If you keep your custom settings in, eg. conf.d/local.ini then you can update PHP easily while retaining any environment-specific settings.
+
+The files are loaded in numeric order, so 000-php.ini is loaded before 001-php.ini.
+
+Committing files to the repositry will generate a new build on docker hub automatically.
+
+
+# About 
 
 Features
 --------
@@ -27,3 +45,13 @@ Standalone usage example with host's current working directory as document root:
 
 	$ docker run -p 80:80 -v $(pwd):/var/www/html webgriffe/php-apache-base
 
+Building
+-----
+You can build the image locally from the directory containing the Dockerfile
+
+	docker build -t joybird-apache
+
+
+
+
+Props to webgriffe
